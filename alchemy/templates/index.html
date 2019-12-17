@@ -28,13 +28,10 @@
             <i class="fa fa-folder-open-o"></i>
             <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
           </li>
-          {% if not HIDE_AUTHORS and article.authors %}
-            <li>
-              <i class="fa fa-user-o"></i>
-              {% for author in article.authors %}
-                <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            </li>
+          {% if not HIDE_AUTHORS and article.link %}
+           <li>
+                <a href="{{ article.link }}">Link</a>
+           </li> 
           {% endif %}
         </ul>
       </header>
@@ -42,8 +39,17 @@
         <h4 class="title">
           <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
         </h4>
+        {% if not HIDE_AUTHORS and article.authors %}
+            
+              <i class="fa fa-user-o"></i>
+              {% for author in article.authors %}
+                <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            
+          {% endif %}
+          
         <div class="content">
-          {{ article.summary|striptags }}
+          {% if article.cover %} {{ article.cover }} {% endif %} {{ article.summary }}
         </div>
       </div>
     </article>
