@@ -19,14 +19,16 @@
 
 {% block content %}
 {% for area in RESEARCHAREAS %}
-    <article class="row">
-    {{ area }}
+    <article class="row teaser">
+      <h4 class="title">
+          {{ area }}
+      </h4>
       <header class="col-sm-12 text-muted">
         <ul class="list-inline">
 			{% for article in articles_page.object_list %}
 			{% if article.type == area %}
-          <li class="list-inline-item col-sm-4">
-          <a href="{{ SITEURL }}/{{ article.url }}">
+          <li class="list-inline-item col-sm-4" style="width: 32%; text-align:center;">
+          <a href="{{ SITEURL }}/{{ article.url }}" style="width: 32%; text-align:center;">
             {% if article.cover %} {{ article.cover }} {% endif %}
             {% if article.titleshort %} {{ article.titleshort }} {% endif %}
             </a>
@@ -35,8 +37,10 @@
 		  {% endfor %}
         </ul>
       </header>
-      
     </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
 
 {% endfor %}
 {% endblock %}
