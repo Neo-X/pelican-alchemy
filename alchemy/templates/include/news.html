@@ -1,0 +1,11 @@
+<div  class="row">
+    <h4 >News</h4>
+    {% if NEWS or (DISPLAY_PAGES_ON_MENU and pages) or ICONS %}
+      <ul style="margin-bottom: 0px;">
+        {% for Title in NEWS %}
+          <li ><div>{{ Title }}</div></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+</div>
+
