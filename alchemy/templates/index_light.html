@@ -26,6 +26,11 @@
                 <a href="{{ article.link }}">Link</a>
            </li> 
           {% endif %}
+          {% if article.published %}
+          <li class="content">
+			{{ article.published }}
+        </li>
+           {% endif %} 
         </ul>
       </header>
       <div class="col-sm-8">
@@ -40,9 +45,9 @@
               {% endfor %}
             
           {% endif %}
-          
         <div class="content">
-          {% if article.cover %} {{ article.cover }} {% endif %} {{ article.summary }}
+          {% if article.cover %} {{ article.cover }} {% endif %} 
+          {% if article.summary %} {{ article.summary }} {% endif %} 
         </div>
       </div>
     </article>

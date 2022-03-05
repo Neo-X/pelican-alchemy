@@ -11,3 +11,31 @@
   {{ SITENAME }} | {{ SITESUBTITLE }}
 {% endblock %}
 
+
+{% block content %}
+{% for area in RESEARCHAREAS %}
+    <article class="row teaser">
+    <h4 class="title">
+	    Representative Publications
+	</h4>
+        <ul class="list-inline">
+			{% for article in dates %}
+			{% if article.type == area %}
+          <li class="list-inline-item col-sm-4" style="width: 32%; text-align:center;">
+          <a href="{{ SITEURL }}/{{ article.url }}" style="width: 32%; text-align:center;">
+            {% if article.cover %} {{ article.cover }} {% endif %}
+            {% if article.titleshort %} {{ article.titleshort }} {% endif %}
+            </a>
+            {% if article.summary %} {{ article.summary }} {% endif %}
+          </li>
+          {% endif %}
+		  {% endfor %}
+        </ul>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+
+{% endfor %}
+{% endblock %}
+
